@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Документы</h2>
+  <a href="{% url 'main:upload' %}">Загрузить</a>
+  <ul>
+    {% for document in documents %}
+      <li>
+        {{ document.description }} ({{ document.document.name }})- 
+        <a href="{% url 'main:download' document.id %}">Скачать</a>
+      </li>
+    {% empty %}
+      <li>Документов нет</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'main:upload' %}">Загрузить</a>
+{% endblock %}

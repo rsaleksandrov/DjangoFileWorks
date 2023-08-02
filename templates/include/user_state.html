@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="tile">
+        {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Выйти</a> из системы
+    {% else %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <label for="id_username">Имя:</label>
+            <input type="text" 
+                   name="username" 
+                   autofocus 
+                   autocapitalize="none" 
+                   autocomplete="username" 
+                   maxlength="150" 
+                   required 
+                   id="id_username">
+            <label for="id_password">Пароль:</label>
+            <input type="password" 
+                   name="password" 
+                   autocomplete="current-password" 
+                   required 
+                   id="id_password">
+            <button type="submit">Войти</button>
+        </form>
+    {% endif %}
+    </div>
+</div>
